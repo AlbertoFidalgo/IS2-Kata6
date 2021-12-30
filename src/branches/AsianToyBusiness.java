@@ -1,23 +1,25 @@
-package toys;
+package branches;
 
+import business.SerialNumberGenerator;
+import business.ToyBusiness;
 import toyproducts.Toy;
-import toyproducts.models.HelicopterToy;
-import toyproducts.models.CarToy;
+import toyproducts.models.AsianCarToy;
+import toyproducts.models.AsianHelicopterToy;
 
-public class ToyBusiness {
+public class AsianToyBusiness extends ToyBusiness{
 
     private SerialNumberGenerator generator = new SerialNumberGenerator();
 
     public Toy createToy(String type) {
         switch (type) {
             case "car":
-                CarToy car = new CarToy(generator.next());
+                AsianCarToy car = new AsianCarToy(generator.next());
                 car.pack();
                 car.label();
                 return car;
 
             case "helicopter":
-                HelicopterToy helicopter = new HelicopterToy(generator.next());
+                AsianHelicopterToy helicopter = new AsianHelicopterToy(generator.next());
                 helicopter.pack();
                 helicopter.label();
                 return helicopter;
