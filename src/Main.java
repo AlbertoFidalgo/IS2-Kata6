@@ -8,7 +8,7 @@ import toys.*;
 public class Main {
 
     public static void main(String[] args) {
-        SerialNumberGenerator generator = new SerialNumberGenerator();
+        ToyBusiness toyBusiness = new ToyBusiness();
         ArrayList<Car> carArray = new ArrayList<>();
         ArrayList<Helicopter> helicopterArray = new ArrayList<>();
 
@@ -19,9 +19,7 @@ public class Main {
         while (true) {
             switch (input) {
                 case "car":
-                    Car car = new Car(generator.next());
-                    car.pack();
-                    car.label();
+                    Car car = toyBusiness.createCar();
                     carArray.add(car);
                     System.out.println("Built cars: "
                             + carArray.stream()
@@ -30,9 +28,7 @@ public class Main {
                     break;
 
                 case "helicopter":
-                    Helicopter helicopter = new Helicopter(generator.next());
-                    helicopter.pack();
-                    helicopter.label();
+                    Helicopter helicopter = toyBusiness.createHelicopter();
                     helicopterArray.add(helicopter);
                     System.out.println("Built helicopters: "
                             + helicopterArray.stream()
