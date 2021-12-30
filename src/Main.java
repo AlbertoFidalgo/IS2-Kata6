@@ -1,11 +1,12 @@
 
-import branches.AmericanToyBusiness;
-import branches.AsianToyBusiness;
+import factories.regionalfactories.AmericanToyBusiness;
+import factories.regionalfactories.AsianToyBusiness;
 import static java.lang.System.exit;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import toyproducts.models.*;
+import business.ToyBusiness;
 
 public class Main {
 
@@ -19,13 +20,15 @@ public class Main {
         if (input.equals("1")) {
             System.out.println("Introduzca comando:");
             input = scanner.nextLine();
-            AmericanToyBusiness toyBusiness = new AmericanToyBusiness();
+            AmericanToyBusiness americanBranch = new AmericanToyBusiness();
+            ToyBusiness toyBusiness = new ToyBusiness(americanBranch);
             ArrayList<AmericanCarToy> carArray = new ArrayList<>();
             ArrayList<AmericanHelicopterToy> helicopterArray = new ArrayList<>();
+            
             while (true) {
                 switch (input) {
                     case "car":
-                        AmericanCarToy car = (AmericanCarToy) toyBusiness.createToy("car");
+                        AmericanCarToy car = (AmericanCarToy) toyBusiness.produceToy("car");
                         carArray.add(car);
                         System.out.println("Built cars: "
                                 + carArray.stream()
@@ -34,7 +37,7 @@ public class Main {
                         break;
 
                     case "helicopter":
-                        AmericanHelicopterToy helicopter = (AmericanHelicopterToy) toyBusiness.createToy("helicopter");
+                        AmericanHelicopterToy helicopter = (AmericanHelicopterToy) toyBusiness.produceToy("helicopter");
                         helicopterArray.add(helicopter);
                         System.out.println("Built helicopters: "
                                 + helicopterArray.stream()
@@ -56,13 +59,14 @@ public class Main {
         } else if (input.equals("2")) {
             System.out.println("Introduzca comando:");
             input = scanner.nextLine();
-            AsianToyBusiness toyBusiness = new AsianToyBusiness();
+            AsianToyBusiness asianBranch = new AsianToyBusiness();
+            ToyBusiness toyBusiness = new ToyBusiness(asianBranch);
             ArrayList<AsianCarToy> carArray = new ArrayList<>();
             ArrayList<AsianHelicopterToy> helicopterArray = new ArrayList<>();
             while (true) {
                 switch (input) {
                     case "car":
-                        AsianCarToy car = (AsianCarToy) toyBusiness.createToy("car");
+                        AsianCarToy car = (AsianCarToy) toyBusiness.produceToy("car");
                         carArray.add(car);
                         System.out.println("Built cars: "
                                 + carArray.stream()
@@ -71,7 +75,7 @@ public class Main {
                         break;
 
                     case "helicopter":
-                        AsianHelicopterToy helicopter = (AsianHelicopterToy) toyBusiness.createToy("helicopter");
+                        AsianHelicopterToy helicopter = (AsianHelicopterToy) toyBusiness.produceToy("helicopter");
                         helicopterArray.add(helicopter);
                         System.out.println("Built helicopters: "
                                 + helicopterArray.stream()

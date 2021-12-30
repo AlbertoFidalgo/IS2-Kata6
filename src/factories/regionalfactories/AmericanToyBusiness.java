@@ -1,12 +1,12 @@
-package branches;
+package factories.regionalfactories;
 
-import business.SerialNumberGenerator;
-import business.ToyBusiness;
+import factories.SerialNumberGenerator;
+import factories.ToyFactory;
 import toyproducts.Toy;
 import toyproducts.models.AmericanCarToy;
 import toyproducts.models.AmericanHelicopterToy;
 
-public class AmericanToyBusiness extends ToyBusiness{
+public class AmericanToyBusiness extends ToyFactory{
 
     private SerialNumberGenerator generator = new SerialNumberGenerator();
 

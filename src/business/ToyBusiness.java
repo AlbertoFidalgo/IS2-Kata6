@@ -1,8 +1,17 @@
 package business;
 
+import factories.ToyFactory;
 import toyproducts.Toy;
 
-public abstract class ToyBusiness {
+public class ToyBusiness {
+    ToyFactory toyFactory;
 
-    public abstract Toy createToy(String type);
+    public ToyBusiness(ToyFactory toyFactory) {
+        this.toyFactory = toyFactory;
+    }
+    
+    public Toy produceToy(String type){
+        Toy toy = toyFactory.createToy(type);
+        return toy;
+    }
 }
