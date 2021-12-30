@@ -1,12 +1,13 @@
 
-import factories.regionalfactories.AmericanToyBusiness;
-import factories.regionalfactories.AsianToyBusiness;
 import static java.lang.System.exit;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-import toyproducts.models.*;
 import business.ToyBusiness;
+import factories.regionalfactories.AmericanCarToyFactory;
+import factories.regionalfactories.AmericanHelicopterToyFactory;
+import factories.regionalfactories.AsianCarToyFactory;
+import factories.regionalfactories.AsianHelicopterToyFactory;
 import toyproducts.Toy;
 
 public class Main {
@@ -17,16 +18,16 @@ public class Main {
         System.out.println("2 - Rama Asiatica");
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
-        ToyBusiness toyBusiness = null;
+        ToyBusiness toyBusiness = new ToyBusiness();
         ArrayList<Toy> carArray = new ArrayList<>();
         ArrayList<Toy> helicopterArray = new ArrayList<>();
 
         if (input.equals("1")) {
-            AmericanToyBusiness americanBranch = new AmericanToyBusiness();
-            toyBusiness = new ToyBusiness(americanBranch);
+            toyBusiness.add("car", new AmericanCarToyFactory());
+            toyBusiness.add("helicopter", new AmericanHelicopterToyFactory());
         } else if (input.equals("2")) {
-            AsianToyBusiness asianBranch = new AsianToyBusiness();
-            toyBusiness = new ToyBusiness(asianBranch);
+            toyBusiness.add("car", new AsianCarToyFactory());
+            toyBusiness.add("helicopter", new AsianHelicopterToyFactory());
         } else {
             System.out.println("Rama no existente");
             exit(0);
@@ -34,7 +35,6 @@ public class Main {
 
         System.out.println("Introduzca comando:");
         input = scanner.nextLine();
-
         while (true) {
             switch (input) {
                 case "car":
