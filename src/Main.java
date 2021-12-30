@@ -1,4 +1,6 @@
 
+import toyproducts.models.HelicopterToy;
+import toyproducts.models.CarToy;
 import static java.lang.System.exit;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -9,8 +11,8 @@ public class Main {
 
     public static void main(String[] args) {
         ToyBusiness toyBusiness = new ToyBusiness();
-        ArrayList<Car> carArray = new ArrayList<>();
-        ArrayList<Helicopter> helicopterArray = new ArrayList<>();
+        ArrayList<CarToy> carArray = new ArrayList<>();
+        ArrayList<HelicopterToy> helicopterArray = new ArrayList<>();
 
         System.out.println("Introduzca instruccion:");
         Scanner scanner = new Scanner(System.in);
@@ -19,7 +21,7 @@ public class Main {
         while (true) {
             switch (input) {
                 case "car":
-                    Car car = toyBusiness.createCar();
+                    CarToy car = (CarToy) toyBusiness.createToy("car");
                     carArray.add(car);
                     System.out.println("Built cars: "
                             + carArray.stream()
@@ -28,7 +30,7 @@ public class Main {
                     break;
 
                 case "helicopter":
-                    Helicopter helicopter = toyBusiness.createHelicopter();
+                    HelicopterToy helicopter = (HelicopterToy) toyBusiness.createToy("helicopter");
                     helicopterArray.add(helicopter);
                     System.out.println("Built helicopters: "
                             + helicopterArray.stream()

@@ -1,17 +1,19 @@
-package toys;
+package toyproducts.models;
 
-public class Car {
+import toyproducts.Toy;
+
+public class HelicopterToy implements Toy{
 
     private final Integer serialNumber;
     private final String type;
 
-    public Car(Integer serialNumber) {
+    public HelicopterToy(Integer serialNumber) {
         this.serialNumber = serialNumber;
-        this.type = "car";
+        this.type = "helicopter";
     }
-
-    public String getType() {
-        return type;
+    
+    public Integer getSerialNumber(){
+        return serialNumber;
     }
 
     public void pack() {
@@ -22,7 +24,4 @@ public class Car {
         System.out.printf("Labeling %s with S/N %d \n", type, serialNumber);
     }
 
-    public Integer getSerialNumber() {
-        return serialNumber;
-    }
 }
